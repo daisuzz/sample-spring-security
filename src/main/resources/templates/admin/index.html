@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+</head>
+<body>
+<h1>Admin</h1>
+<div sec:authentication="principal.username"></div>
+<div sec:authentication="principal.authorities"></div>
+<a href="/">Go to Top</a>
+<a href="/logout">Logout</a>
+</body>
+</html>
