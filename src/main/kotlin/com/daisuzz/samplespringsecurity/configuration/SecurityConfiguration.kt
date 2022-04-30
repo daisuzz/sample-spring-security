@@ -17,7 +17,8 @@ class SecurityConfiguration {
     ): SecurityFilterChain {
         http {
             authorizeRequests {
-                authorize(anyRequest, authenticated)
+                authorize("/admin/**", authenticated)
+                authorize(anyRequest, permitAll)
             }
             formLogin { }
             logout {
