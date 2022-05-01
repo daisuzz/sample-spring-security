@@ -7,9 +7,14 @@
 <body>
 <h1>Top</h1>
 <div th:if="${#authorization.expression('!isAnonymous()')}">
-    <div th:text="${#authentication.principal}"></div>
+    <div th:text="${#authentication.principal.username}"></div>
+    <div th:text="${#authentication.principal.authorities}"></div>
 </div>
 <a href="/admin">Go To Admin</a>
-<a href="/logout">Logout</a>
+<div th:if="${#authorization.expression('!isAnonymous()')}">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 </body>
 </html>
