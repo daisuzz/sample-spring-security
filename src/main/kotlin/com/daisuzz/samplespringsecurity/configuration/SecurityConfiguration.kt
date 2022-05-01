@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.web.servlet.invoke
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 
@@ -49,6 +50,7 @@ class SecurityConfiguration {
             val filter = MockUsernamePasswordAuthenticationFilter()
             filter.setAuthenticationManager(authenticationManager)
             filter.setRequiresAuthenticationRequestMatcher(AntPathRequestMatcher("/login", "POST"))
+            filter.setAuthenticationFailureHandler(SimpleUrlAuthenticationFailureHandler("/login?error"))
             http.addFilter(filter)
         }
 
