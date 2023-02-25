@@ -26,7 +26,7 @@ class SecurityConfiguration {
         http.apply(mockUsernamePasswordAuthenticationFilter())
         http.authenticationProvider(mockAuthenticationProvider)
         http {
-            authorizeRequests {
+            authorizeHttpRequests {
                 authorize("/admin/**", authenticated)
                 authorize(anyRequest, permitAll)
             }
